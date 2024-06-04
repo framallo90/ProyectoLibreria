@@ -1,19 +1,16 @@
 package com.framallo90.Model.Repository;
 
 import com.framallo90.Interface.RepositoryInterface;
-import com.framallo90.Model.Entity.Libros;
+import com.framallo90.Model.Entity.Libro;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
-public class LibrosRepository implements RepositoryInterface <Libros>{
-    private Set<Libros> listaLibros = new HashSet<>();
+public class LibrosRepository implements RepositoryInterface <Libro>{
+    private Set<Libro> listaLibros = new HashSet<>();
     private static final String PATH = "src/main/resources/libros.json";
     private Gson gson = new Gson();
 
@@ -23,7 +20,7 @@ public class LibrosRepository implements RepositoryInterface <Libros>{
 
     public void loadFile(){
         try (Reader reader = new FileReader(PATH)) {
-            Type setType = new TypeToken<Set<Libros>>(){}.getType();
+            Type setType = new TypeToken<Set<Libro>>(){}.getType();
             listaLibros = gson.fromJson(reader,setType);
             if(listaLibros == null){
                 listaLibros = new HashSet<>();
@@ -44,22 +41,49 @@ public class LibrosRepository implements RepositoryInterface <Libros>{
     }
 
     @Override
-    public void add(Libros object) {
-
+    public void add(Libro object) {
+        this.listaLibros.add(object);
+        updateFile();
     }
 
     @Override
-    public void remove(Libros object) {
-
+    public void remove(Libro object) {
+        this.listaLibros.remove(object);
+        updateFile();
     }
 
     @Override
-    public void update(Libros object) {
-
+    public void update(Libro object) {
     }
 
+
     @Override
-    public Libros find(int id) {
+    public Libro find(int id) {
         return null;
     }
+
+    public Libro findLibros(String isbn) {
+        Libro libroBuscado = null;
+        for(Libro libro : listaLibros){
+            if(libro.getIsbn().equals(isbn)){
+                libroBuscado = libro;
+            }
+        }
+        return libroBuscado;
+    }
+
+    public void updatePrice(Libro modificado, float nuevoPrecio){
+        modificado.setPrecio(nuevoPrecio);
+        updateFile();
+    }
+
+    public void updateCopias(Libro modificado, int numeroNuevo){
+        modificado.setCopias(numeroNuevo);
+        updateFile();
+    }
+
+    public Set<Libro> getListaLibros() {
+        return listaLibros;
+    }
+
 }

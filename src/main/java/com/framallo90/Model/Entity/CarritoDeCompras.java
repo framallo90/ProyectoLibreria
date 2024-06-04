@@ -6,10 +6,10 @@ public class CarritoDeCompras {
     private int id;
     private static int idCont = 0;
     private Usuario usuario;
-    private List<Libros> detalleCompra;
+    private List<Libro> detalleCompra;
     private float total;
 
-    public CarritoDeCompras( Usuario usuario, List<Libros> detalleCompra, float total) {
+    public CarritoDeCompras(Usuario usuario, List<Libro> detalleCompra, float total) {
         this.id = ++idCont;
         this.usuario = usuario;
         this.detalleCompra = detalleCompra;
@@ -33,11 +33,11 @@ public class CarritoDeCompras {
         this.usuario = usuario;
     }
 
-    public List<Libros> getDetalleCompra() {
+    public List<Libro> getDetalleCompra() {
         return detalleCompra;
     }
 
-    public void setDetalleCompra(List<Libros> detalleCompra) {
+    public void setDetalleCompra(List<Libro> detalleCompra) {
         this.detalleCompra = detalleCompra;
     }
 

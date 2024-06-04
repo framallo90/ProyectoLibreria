@@ -1,13 +1,25 @@
 package com.framallo90.Model.Entity;
 
-public class Libros {
+public class Libro {
     private String titulo;
-    private Integer isbn;
+    private String isbn;
     private String autor;
     private float precio;
     private int copias;
 
-    public Libros(String titulo, Integer isbn, String autor, float precio, int copias) {
+    public Libro(String titulo, String isbn, String autor, float precio, int copias) {
+        if(titulo == null || titulo.trim().isEmpty()){
+            throw new IllegalArgumentException("El titulo no puede estar vacio");
+        }
+        if(isbn == null || titulo.trim().isEmpty()){
+            throw new IllegalArgumentException("El isbn no puede estar vacio");
+        }
+        if(autor == null || titulo.trim().isEmpty()){
+            throw new IllegalArgumentException("El titulo no puede estar vacio");
+        }if(precio < 0){
+            throw new IllegalArgumentException("El precio no puede ser menor a 0");
+        }
+
         this.titulo = titulo;
         this.isbn = isbn;
         this.autor = autor;
@@ -34,11 +46,11 @@ public class Libros {
         this.titulo = titulo;
     }
 
-    public Integer getIsbn() {
+    public String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(Integer isbn) {
+    public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
