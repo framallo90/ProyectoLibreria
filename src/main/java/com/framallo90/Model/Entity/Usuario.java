@@ -7,7 +7,7 @@ public class Usuario extends Persona {
     private String contrasena;
     private String tipoDeUser;
 
-    public Usuario(String nombre, String apellido, String dni, int id, String nombreDeUsuario, String contrasena, String tipoDeUser) {
+    public Usuario(String nombre, String apellido, String dni, String nombreDeUsuario, String contrasena, String tipoDeUser) {
         super(nombre, apellido, dni);
         this.id = ++idCounter;
         this.nombreDeUsuario = nombreDeUsuario;

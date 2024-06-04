@@ -72,13 +72,15 @@ public class LibrosRepository implements RepositoryInterface <Libro>{
         return libroBuscado;
     }
 
-    public void updatePrice(Libro modificado, float nuevoPrecio){
+    public void updatePrice(String isbn, float nuevoPrecio){
+        Libro modificado = findLibros(isbn);
         modificado.setPrecio(nuevoPrecio);
         updateFile();
     }
 
-    public void updateCopias(Libro modificado, int numeroNuevo){
-        modificado.setCopias(numeroNuevo);
+    public void updateCopias(String isbn, int numeroNuevo){
+        Libro modificado = findLibros(isbn);
+        modificado.setPrecio(numeroNuevo);
         updateFile();
     }
 

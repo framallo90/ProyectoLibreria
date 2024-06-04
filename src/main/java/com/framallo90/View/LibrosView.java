@@ -63,9 +63,12 @@ public class LibrosView {
     }
 
     public void readLibro(Libro libro){
+        System.out.println("-----------------------------");
         System.out.println("Titulo:" + libro.getTitulo());
-        System.out.println("Autor" + libro.getAutor());
-        System.out.println("Precio" + libro.getPrecio());
+        System.out.println("Autor:" + libro.getAutor());
+        System.out.println("Isbn :" + libro.getIsbn());
+        System.out.println("Precio:" + libro.getPrecio());
+        System.out.println("------------------------------");
     }
 
     public void readLibros(Set<Libro> setlibros){

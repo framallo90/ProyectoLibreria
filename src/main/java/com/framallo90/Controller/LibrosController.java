@@ -14,6 +14,7 @@ public class LibrosController {
         this.librosRepository = librosRepository;
         this.librosView = librosView;
     }
+
     public void menuLibro(){
         Scanner scanner = new Scanner(System.in);
         int opt;
@@ -73,7 +74,6 @@ public class LibrosController {
     public void updateLibro(){
         Scanner scanner = new Scanner(System.in);
         String isbn = librosView.ingresoIsbn();
-        Libro toUpdate = librosRepository.findLibros(isbn);
         int opt;
         do{
             System.out.println("1. cambiar precio.");
@@ -84,12 +84,12 @@ public class LibrosController {
             switch (opt){
                 case 1:
                     float nuevoPrecio = librosView.ingresoPrecio();
-                    librosRepository.updatePrice(toUpdate,nuevoPrecio);
+                    librosRepository.updatePrice(isbn, nuevoPrecio);
                     break;
 
                 case 2:
                     int nuevaCopia = librosView.ingresoNroCopias();
-                    librosRepository.updateCopias(toUpdate,nuevaCopia);
+                    librosRepository.updateCopias(isbn,nuevaCopia);
                     break;
 
                 case 3:
